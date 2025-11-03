@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Excluir Usuário</title>
+  <style>
+    body { background: #f8d7da; font-family: Arial; padding: 50px; text-align: center; }
+    .box {
+      background: #fff; display: inline-block;
+      padding: 30px 50px; border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    h1 { color: #a94442; }
+    button {
+      background: #d9534f; color: white;
+      border: none; padding: 10px 20px;
+      border-radius: 6px; cursor: pointer; margin-top: 20px;
+    }
+    button:hover { background: #c9302c; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Excluir Usuário</h1>
+    <p>Tem certeza que deseja excluir <strong>{{ object.username }}</strong>?</p>
+    <form method="post">{% csrf_token %}
+      <button type="submit">Confirmar Exclusão</button>
+    </form>
+  </div>
+</body>
+</html>

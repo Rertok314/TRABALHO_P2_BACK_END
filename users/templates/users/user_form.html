@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Usuário</title>
+  <style>
+    body { background: #eef6fb; font-family: Arial; padding: 40px; }
+    form {
+      max-width: 400px; margin: auto; background: #fff;
+      padding: 20px 30px; border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h1 { text-align: center; color: #007acc; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input, select {
+      width: 100%; padding: 10px; margin-top: 5px;
+      border: 1px solid #ccc; border-radius: 6px;
+    }
+    button {
+      background: #007acc; color: white; border: none;
+      padding: 10px 20px; border-radius: 6px;
+      margin-top: 20px; width: 100%; cursor: pointer;
+    }
+    button:hover { background: #005f99; }
+  </style>
+</head>
+<body>
+  <form method="post">
+    {% csrf_token %}
+    <h1>{% if object %}Editar Usuário{% else %}Cadastrar Usuário{% endif %}</h1>
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+  </form>
+</body>
+</html>

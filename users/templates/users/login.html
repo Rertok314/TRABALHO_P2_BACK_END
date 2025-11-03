@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Sistema</title>
+  <style>
+    body {
+      background: #eef6fb;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-box {
+      background: #fff;
+      padding: 40px 50px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    h1 {
+      color: #007acc;
+      margin-bottom: 20px;
+    }
+    form { text-align: left; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      margin-top: 20px;
+      background: #007acc;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover { background: #005f99; }
+    .footer { margin-top: 15px; font-size: 14px; color: #666; }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h1>🔐 Login</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Entrar</button>
+    </form>
+    <div class="footer">
+      <p>Use seu nome de usuário e senha cadastrados</p>
+    </div>
+  </div>
+</body>
+</html>

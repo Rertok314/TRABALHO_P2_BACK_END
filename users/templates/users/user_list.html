@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciamento de Usuários</title>
+  <style>
+    body { font-family: "Segoe UI", sans-serif; background: #f4f8fb; padding: 40px; }
+    h1 { color: #007acc; border-bottom: 2px solid #007acc; padding-bottom: 5px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+    th, td { padding: 12px 15px; border-bottom: 1px solid #ddd; }
+    th { background: #007acc; color: #fff; text-align: left; }
+    tr:hover { background: #eef6fb; }
+    a.button {
+      background: #007acc;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      margin: 4px;
+      display: inline-block;
+    }
+    a.delete { background: #d9534f; }
+    a.button:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <h1>👥 Usuários Cadastrados</h1>
+  <a href="{% url 'user_create' %}" class="button">+ Novo Usuário</a>
+  <table>
+    <tr>
+      <th>ID</th><th>Nome</th><th>Email</th><th>Papel</th><th>Ações</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+      <td>{{ user.id }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.get_role_display }}</td>
+      <td>
+        <a href="{% url 'user_update' user.id %}" class="button">Editar</a>
+        <a href="{% url 'user_delete' user.id %}" class="button delete">Excluir</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">Nenhum usuário cadastrado.</td></tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
